@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href="output.css" rel="stylesheet">
+    <title>BankApp</title>
+</head>
+<style>
+    html{
+        overflow-x: hidden;
+        position: relative;
+    }
+   
+   .DEPOSITED{ 
+   
+    background: rgb(143,179,90);
+    background: linear-gradient(339deg, #22c55e 0%, #16a34a 100%);
+   }
+   .WITHDRAWN{
+    background: rgb(200,32,32);
+    background: linear-gradient(339deg, #f87171 0%, #ef4444 100%);
+   }
+   ::-webkit-scrollbar {
+    width: 5px;
+   
+    
+   }
+   ::-webkit-scrollbar-thumb{
+        background-color: rgba(64, 64, 249, 0.737) ;
+        border-radius: 10px;  
+   }
+   ::-webkit-scrollbar-track{
+        background-color: rgb(123, 123, 144);
+        margin: 10px 0px;
+        border-radius: 10px;
+        visibility: hidden;
+        
+   }
+</style>
+<body class="bg-gray-300">
+    <div class="w-screen md:h-screen flex justify-center  items-center bg-gray-300 font-mono">
+        <div id="loginPage" class="flex flex-col w-screen h-screen justify-center items-center">
+            <div class="text-gray-500 text-sm mb-3">
+                <P>Usernames: mm, jd, ss <br>
+                    Password: 123
+                </P>
+            </div>
+
+
+            <div  class="md:w-2/6 h-2/4 w-11/12 bg-gradient-to-br  from-gray-500/50 to-gray-600/50 drop-shadow-lg items-center flex justify-center font-sans rounded-lg">
+                <form>
+                    <div >
+                        <label class="font-bold " for="username">Username</label>
+                        <input type="text" name="username" id="username" required class="p-2 my-3 rounded w-full">
+                    </div>
+                    <div>
+                        <label class="mt-3 font-bold " for="pin">Pin</label>
+                        <input type="password" id="Pin" required class="p-2  my-3 rounded w-full">
+                    </div>
+                    <div>
+                        <button id="loginBtn" type="submit" class="p-2 mt-3 font-bold cursor-pointer rounded bg-sky-700 text-white hover:bg-sky-500 w-full">Login</button>
+                    </div>
+                </form>
+        </div>
+        </div>
+
+     
+        <div id="homePage" class="main-container absolute hidden top-20 md:relative flex flex-col sm:w-8/12 w-11/12">
+            <div class="Navbar flex justify-evenly fixed top-0 text-white font-sans left-0 p-4 bg-gradient-to-br from-gray-700 to-gray-600 drop-shadow w-screen">
+                <div class="w-2/4 flex">
+                    <h1 class="md:text-3xl flex flex-col md:flex-row text-md">
+                    <span>Welcome:</span>
+                    <span id="WelcomeP" class="md:ms-3"></span>
+                    </h1>
+                </div>
+                <div>
+                    <span class="ms-auto " ><i class="bi bi-fan md:text-4xl text-2xl "></i></span>
+                </div>
+                
+                <div class="ms-auto">
+                    <button type="button" id="logOut"><i class="bi bi-box-arrow-right md:text-4xl text-2xl hover:text-red-500 cursor-pointer"></i></button>
+                </div>
+            </div>
+
+            <div class="w-full h-16 mt-3 px-3 flex justify-between">
+                <div>
+                    <h1 class="md:text-2xl text-lg font-bold">Current Balance</h1>
+                    <h1 id="displayDate" class="font-thin text-xs md:text-base">Date</h1>
+                </div>
+                <div id="balance" class="font-bold md:text-4xl text-lg">
+                    0000
+                </div>
+            </div>
+
+           <div class="flex flex-col w-full md:flex-row h-fit justify-center">
+                <div id="container" class="md:w-10/12 h-96 overflow-auto bg-white rounded-2xl mb-3">
+                    <div class="w-full h-30 rounded bg-gray-400 p-4 shadow">
+                        <div class="flex justify-between ">
+                            <span class="rounded-full deposited text-white font-bold"> 
+                                <span class="rounded-l-lg  bg-sky-600 text-white font-bold">1</span>deposited</span>
+                            <span class="rounded-full p-2 bg-yellow-600 text-white font-bold">number</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="flex flex-col justify-evenly h-96">
+                    <div class="md:w-64 h-3/6 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-lg ms-3 flex flex-col justify-evenly items-center">
+                        <h1 class="font-bold text-lg ">Transfer Amount</h1>
+                        <span class="flex justify-center px-4" >
+                                <form>
+                                    <input placeholder="Amount" type="number" name="amount" required class="bg-yellow-200 w-2/6 h-full outline-yellow-600 text-center text-sm  rounded-lg  " id="amount">
+                                    <input id="transferAccount" placeholder="Transfer To" type="text" required class="bg-yellow-200 w-3/6 h-full text-center text-sm outline-yellow-600  rounded-lg" >
+                                    <button type="submit" id="transferBtn"><i class="bi bi-arrow-right-square-fill text-lg text-white w-1/6 hover:text-green-600"></i></button>
+                                </form>
+                        </span>
+                    </div>
+                    <div class="md:w-64 h-3/6 bg-gradient-to-br from-green-500 to-green-600 mt-3 rounded-lg ms-3 flex flex-col items-center justify-evenly">
+                            <h1 class="text-lg font-bold">Request loan</h1>
+                            <span class="text-center ">
+                                   <form>
+                                        <input placeholder="Amount" class="font-bold rounded-lg w-2/4 text-center bg-green-200 outline-green-600" type="number" name="deposit" id="deposit">
+                                        <button type="submit" id="depositBtn" ><i class="bi bi-arrow-right-square-fill text-lg text-white hover:text-red-600"></i></button>
+                                   </form>
+                            </span>
+                    </div>
+
+                    <div class="md:w-64 h-3/6 bg-gradient-to-br from-red-400 to-red-500 mt-3 rounded-lg ms-3 flex flex-col items-center justify-evenly">
+                        <h1 class="text-lg font-bold">Close Account</h1>
+                        <span class="text-center">
+                            <form>
+                                <input id="confirmUser" placeholder="User" required class="font-bold text-center text-sm rounded-lg w-2/6 bg-red-200 outline-red-600" type="text" name="confirmUser" >
+                                <input id="confirmPin" placeholder="Pin" type="password" required class="font-bold text-center rounded-lg w-2/6 bg-red-200 outline-red-600" name="confirmPin" >
+                                <button type="submit" id="deleteBtn"><i class="bi bi-arrow-right-square-fill text-lg text-white hover:text-green-400"></i></button>
+                            </form>
+                        </span>
+                    </div>
+                </div>
+           </div>
+
+           <div class="w-full py-6 px-3 flex md:gap-6 gap-5 font-sans">
+                <div class="flex gap-2 items-end">
+                    <h1 class="md:text-lg ">IN</h1>
+                    <P id="incomeP" class="md:text-2xl text-green-500 ">0000$</P>
+                </div>
+                <div class="flex gap-2 items-end">
+                    <h1 class="md:text-lg ">OUT</h1>
+                    <P id="OutP" class="md:text-2xl text-red-500 ">0000$</P>
+                </div>
+                <div class="flex gap-2 items-end">
+                    <h1 class="md:text-lg ">INTEREST</h1>
+                    <P id="interestP" class="md:text-2xl text-green-500 ">0000$</P>
+                </div>
+                <div class="ms-auto">
+                    <button id="sortBtn"><i class="bi bi-sort-down text-black hover:text-gray-500 text-2xl"></i></button>
+                </div>
+                <div class="ms-3 hidden md:block">
+                    <span>You will be logged out in
+                        <span id="timer" class="font-bold"></span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+
+<script src="custom.js"></script>
+</html>
