@@ -62,12 +62,14 @@ let currentAccount, timer;
 
 loginBtn.addEventListener("click", function (e) {
   e.preventDefault();
-
+  
   currentAccount = accounts.find((acc) => {
     return acc.userName === userInputLogin.value;
   });
-  let errorMsg =
-    '<p id="Error" class="text-white">You have entered wrong Pin or Username</p>';
+  let errorMsg = document.createElement('div');
+      errorMsg.textContent='You have entered wrong Pin or Username'
+      errorMsg.classList.add('text-white');
+      
   if (currentAccount?.pin === Number(userPin.value)) {
     loginPage.classList.toggle("hidden");
     homePage.classList.toggle("hidden");
@@ -77,11 +79,15 @@ loginBtn.addEventListener("click", function (e) {
     userInputLogin.value = "";
     userPin.value = "";
   } else {
-    loginBtn.insertAdjacentHTML("afterend", errorMsg);
+    loginBtn.after(errorMsg);
     userPin.value = null;
     userInputLogin.value = null;
+    setTimeout(() => {
+      errorMsg.remove()
+    }, 2000);
+   
   }
-  
+
 });
 
 logOutBtn.addEventListener("click", loginOut);
